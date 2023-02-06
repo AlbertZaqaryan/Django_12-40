@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Posts Page</h1>
+    <hr>
+    <div>
+        <form method="post">
+            {% csrf_token %}
+            <p>
+                Post name: <input type="text" name="name" id="">
+            </p>
+            <p>
+                Post about: <input type="text" name="about">
+            </p>
+            <p>
+                Post year: <input type="number" name="year" max="150" min="0">
+            </p>
+            <button type="submit">Post</button>
+        </form>
+    </div>
+    <div>
+        <h1>Post Info</h1>
+        {% if request.POST %}
+            <p>
+                {{ request.POST.name }}
+            </p>
+            <p>
+                {{ request.POST.about }}
+            </p>
+            <p>
+                {{ request.POST.year }}
+            </p>
+        {% endif %}
+    </div>
+</body>
+</html>
